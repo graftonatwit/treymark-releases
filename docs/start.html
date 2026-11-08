@@ -22,9 +22,43 @@
   <h1>Getting started</h1>
   <p class="updated">About two minutes from download to your first fixed note.</p>
   <div class="toc">
-    <a href="#install">Install</a><a href="#project">Pick a project</a><a href="#page">Add to your page</a>
+    <a href="#need">What you need</a><a href="#install">Install</a><a href="#project">Pick a project</a><a href="#page">Add to your page</a>
     <a href="#agent">Connect your agent</a><a href="#loop">First note</a><a href="#handsfree">Hands-free</a><a href="#share">Share</a><a href="#brain">Second brain</a><a href="#trouble">Troubleshooting</a>
   </div>
+
+  <h2 id="need">What you need</h2>
+  <h3>Required</h3>
+  <ul>
+    <li><strong>Windows 10 or 11</strong> (64-bit). Treymark is Windows only for now.</li>
+    <li><strong>A web app you run on your own computer</strong>, served from <code>localhost</code> or <code>127.0.0.1</code> (for example <code>http://localhost:3000</code>). Any framework works.</li>
+    <li><strong>A browser:</strong> Chrome, Edge or Firefox. Any other browser can use the script tag instead of the extension.</li>
+    <li><strong>A coding agent that supports MCP or a shell:</strong> Claude Code, Codex, Cursor, Gemini CLI or similar. Treymark does not include an agent. Use the one you already have.</li>
+  </ul>
+  <h3>Not required</h3>
+  <ul>
+    <li><strong>Node.js.</strong> Treymark ships its own runtime for the server, the agent connection and the command line.</li>
+    <li><strong>An account, API key or internet connection.</strong> The internet is only used to check for updates and download them from GitHub.</li>
+    <li><strong>Admin rights.</strong> The installer is per-user.</li>
+  </ul>
+  <h3>Optional</h3>
+  <ul>
+    <li><strong>VS Code or Cursor</strong> for the notes panel.</li>
+    <li><strong>Claude Code</strong> for auto-run, which starts it for you when notes arrive.</li>
+    <li><strong>Obsidian</strong> to browse the notes folder (any Markdown editor works).</li>
+    <li><strong>A git remote on GitHub</strong> to turn a note into a prefilled issue.</li>
+  </ul>
+
+  <h3>The whole flow at a glance</h3>
+  <ol>
+    <li>Install Treymark and open it once. It sits in the system tray.</li>
+    <li>Choose your project folder in the app. The app starts a local server for it.</li>
+    <li>Load the extension in your browser (one time), then open your app on localhost.</li>
+    <li>Connect your agent (one time): paste the MCP command from the <strong>Connect agent</strong> tab and install the skill.</li>
+    <li>Press <strong>Alt+A</strong> on your page, click an element, type what should change, and send.</li>
+    <li>Tell your agent <strong>"check my Treymark notes"</strong>. It reads the note, changes the code and replies.</li>
+    <li>Reload your page, read the reply on the pin, and reply again until it is right. Green means done.</li>
+  </ol>
+  <p>Steps 1 to 4 are one-time setup. After that, each change is steps 5 to 7. Keep Treymark running (the tray is fine) while you work, because your agent talks to it.</p>
 
   <h2 id="install">1. Install</h2>
   <ol>
