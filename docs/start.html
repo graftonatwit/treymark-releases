@@ -31,7 +31,7 @@
   <ul>
     <li><strong>Windows 10 or 11</strong> (64-bit). Treymark is Windows only for now.</li>
     <li><strong>A web app you run on your own computer</strong>, served from <code>localhost</code> or <code>127.0.0.1</code> (for example <code>http://localhost:3000</code>). Any framework works.</li>
-    <li><strong>A browser:</strong> Chrome, Edge or Firefox. Any other browser can use the script tag instead of the extension.</li>
+    <li><strong>A browser.</strong> Any browser works with the script tag. Firefox also has an add-on, which adds style clipping from other sites. (A Chrome extension is planned, not available yet.)</li>
     <li><strong>A coding agent that supports MCP or a shell:</strong> Claude Code, Codex, Cursor, Gemini CLI or similar. Treymark does not include an agent. Use the one you already have.</li>
   </ul>
   <h3>Not required</h3>
@@ -52,7 +52,7 @@
   <ol>
     <li>Install Treymark and open it once. It sits in the system tray.</li>
     <li>Click <strong>Set up everything</strong> on the first screen. It asks for your project folder, installs the agent skills, connects Claude Code and adds the VS Code and Cursor panel. Nothing else to copy or paste.</li>
-    <li>Load the extension in your browser (one time): the same screen has an <strong>Open extensions page</strong> button that copies the folder path for you. Then open your app on localhost.</li>
+    <li>Add the one-line script tag to your app (or load the Firefox add-on: the same screen has a button that opens Firefox's add-on page and copies the folder path). Then open your app on localhost.</li>
     <li>Using Codex, Cursor or another agent? The <strong>Connect agent</strong> tab has the copy-and-paste setup for them.</li>
     <li>Press <strong>Alt+A</strong> on your page, click an element, type what should change, and send.</li>
     <li>Tell your agent <strong>"check my Treymark notes"</strong>. It reads the note, changes the code and replies.</li>
@@ -73,24 +73,17 @@
   <p>You can add several projects in the sidebar and click one to switch. One project is active at a time. Closing the window keeps Treymark running in the system tray; quit from the tray icon.</p>
 
   <h2 id="page">3. Add Treymark to your page</h2>
-  <h3>Chrome extension (recommended)</h3>
-  <p>The extension adds Treymark to every page on <code>localhost</code> or <code>127.0.0.1</code>, so your project needs no changes. It works in Chrome, Edge and Firefox.</p>
-  <ol>
-    <li>Open <code>chrome://extensions</code> (or <code>edge://extensions</code>).</li>
-    <li>Turn on <strong>Developer mode</strong>.</li>
-    <li>Click <strong>Load unpacked</strong> and choose the extension folder. The <strong>Connect agent</strong> tab in the app shows its path. With the default install it is:</li>
-  </ol>
-  <pre>%LOCALAPPDATA%\Programs\Treymark\resources\extension</pre>
-  <h3>Firefox add-on</h3>
+  <h3>Script tag (any browser)</h3>
+  <p>Add the tag from the <strong>Connect agent</strong> tab to your app during development only. It works in every browser on <code>localhost</code>. It usually looks like this (the port can differ if 4747 was busy):</p>
+  <pre>&lt;script src="http://127.0.0.1:4747/overlay.js"&gt;&lt;/script&gt;</pre>
+  <h3>Firefox add-on (optional)</h3>
+  <p>The add-on adds Treymark to every page on <code>localhost</code> or <code>127.0.0.1</code>, so your project needs no changes, and it lets you clip styles on other sites.</p>
   <ol>
     <li>Open <code>about:debugging</code> and click <strong>This Firefox</strong>.</li>
     <li>Click <strong>Load Temporary Add-on</strong> and pick <code>manifest.json</code> in the Firefox add-on folder the app shows. With the default install it is:</li>
   </ol>
   <pre>%LOCALAPPDATA%\Programs\Treymark\resources\firefox-extension</pre>
   <p>Firefox removes temporary add-ons when it restarts, so repeat this after a restart until Treymark is listed on Firefox Add-ons.</p>
-  <h3>Script tag</h3>
-  <p>For other browsers, or if you prefer no extension, add the tag from the <strong>Connect agent</strong> tab to your app during development only. It usually looks like this (the port can differ if 4747 was busy):</p>
-  <pre>&lt;script src="http://127.0.0.1:4747/overlay.js"&gt;&lt;/script&gt;</pre>
 
   <h2 id="agent">4. Connect your agent</h2>
   <p>Open the <strong>Connect agent</strong> tab. It shows ready-to-copy setup for Claude Code, Codex, Cursor and any agent with a shell, using Treymark's built-in runtime. You do not need Node installed. One setup covers every project: your agent always works on the project selected in Treymark.</p>
@@ -129,7 +122,7 @@
   <ul>
     <li>Open the <strong>Styles</strong> tab in the app to browse your clips. If you set a notes folder, each clip is also saved there as a Markdown note with tags and its screenshot, in a <code>Styles</code> folder, so Obsidian can search them.</li>
     <li>Click <strong>Use on my page</strong> on a clip and say what should look like it. Treymark sends your agent a note with the saved styles, and your agent can also read your clips and their screenshots.</li>
-    <li>On a site that is not localhost, click the toolbar button once and allow Treymark on that site. Chrome and Firefox ask for each site separately. Use Alt+Shift+C or the toolbar button, not only Alt+A, if you want the screenshot: browsers only let the extension capture a page after you use the extension on it. Without it the clip is saved with styles but no picture.</li>
+    <li>On a site that is not localhost, click the toolbar button once and allow Treymark on that site. Firefox asks for each site separately. Use Alt+Shift+C or the toolbar button, not only Alt+A, if you want the screenshot: browsers only let the extension capture a page after you use the extension on it. Without it the clip is saved with styles but no picture.</li>
     <li>Clips never leave your computer. Only the Treymark extension may add clips from other sites, and it can add them but not read your notes.</li>
   </ul>
 
@@ -148,7 +141,7 @@
   <ul>
     <li><strong>GitHub issue:</strong> open a note in the app and click <strong>GitHub issue</strong>. Treymark opens a new-issue page with everything filled in and copies the screenshot so you can paste it. Nothing is posted until you click Submit on GitHub. The repository comes from your project's git remote, or Treymark asks once.</li>
     <li><strong>Teammates:</strong> click <strong>Export</strong> in the inbox to save your notes and screenshots as a <code>.treymark</code> file. Your teammate clicks <strong>Import</strong>, and their agent can pick the notes up. Imported notes are checked like any other input.</li>
-    <li><strong>Staging sites:</strong> under <strong>Connect agent &gt; Staging sites</strong>, add the address (for example <code>https://staging.example.com</code>). Open that site in Chrome, click the Treymark extension icon, and allow it when Chrome asks. Treymark only runs on sites you add in both places.</li>
+    <li><strong>Staging sites:</strong> under <strong>Connect agent &gt; Staging sites</strong>, add the address (for example <code>https://staging.example.com</code>). Open that site in Firefox with the Treymark add-on, click its toolbar icon, and allow it when Firefox asks. Treymark only runs on sites you add in both places.</li>
   </ul>
 
   <h2 id="brain">8. Keep a UI second brain (optional)</h2>
@@ -170,7 +163,7 @@
   <h3>The agent does not see Treymark tools</h3>
   <p>Start a new agent session after adding the MCP setup. In Claude Code, run <code>/mcp</code> to check that <code>treymark</code> is connected.</p>
   <h3>Updates</h3>
-  <p>From version 0.2.0, Treymark checks for updates every few hours. When one is ready, click <strong>Restart to update</strong> in the sidebar or the tray menu. If you have 0.1.x, download the latest installer once. After an update, open <code>chrome://extensions</code> and click the reload icon on Treymark so the extension picks up the new version.</p>
+  <p>From version 0.2.0, Treymark checks for updates every few hours. When one is ready, click <strong>Restart to update</strong> in the sidebar or the tray menu. If you have 0.1.x, download the latest installer once. After an update, load the Firefox add-on again if you use it (it is removed when Firefox restarts).</p>
   <h3>Start with Windows</h3>
   <p>Off by default. Turn on <strong>Start with Windows</strong> in the sidebar to have Treymark start in the tray when you sign in.</p>
   <h3>Uninstall</h3>
@@ -182,6 +175,7 @@
   <a class="brand" href="./"><img src="logo.svg" alt="" width="20" height="20">Treymark</a>
   <a href="start.html">Docs</a>
   <a href="architecture.html">Architecture</a>
+  <a href="stats.html">Stats</a>
   <a href="privacy.html">Privacy</a>
   <a href="cookies.html">Cookies</a>
   <a href="terms.html">Terms</a>

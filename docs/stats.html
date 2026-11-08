@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stats · Treymark</title>
+<meta name="description" content="Public download counts for Treymark releases, read live from GitHub.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="./"><img src="logo.svg" alt="" width="24" height="24">Treymark</a>
+  <div class="links">
+    <a href="start.html">Docs</a>
+    <a href="architecture.html">Architecture</a>
+    <a class="btn btn-primary btn-sm" href="https://github.com/graftonatwit/treymark-releases/releases/latest">Download</a>
+  </div>
+</div></nav>
+
+<main class="doc">
+  <h1>Stats</h1>
+  <p class="updated">Download counts, read live from GitHub when you open this page.</p>
+
+  <div class="stats" id="cards" aria-live="polite">
+    <div class="stat"><b id="total">...</b><span>installer downloads, all versions</span></div>
+    <div class="stat"><b id="latest">...</b><span id="latest-label">latest version</span></div>
+    <div class="stat"><b id="addons">...</b><span>Firefox add-on and editor panel downloads</span></div>
+    <div class="stat"><b id="releases">...</b><span>releases published</span></div>
+  </div>
+
+  <h2>By version</h2>
+  <table>
+    <thead><tr><th>Version</th><th>Published</th><th class="num">Installer</th><th class="num">Add-on and panel</th></tr></thead>
+    <tbody id="rows"><tr><td colspan="4">Loading...</td></tr></tbody>
+  </table>
+  <p id="err" hidden>Could not load the counts from GitHub right now. Try again in a minute.</p>
+
+  <h2>What these numbers mean</h2>
+  <ul>
+    <li>They are GitHub's own download counters for each file on the <a href="https://github.com/graftonatwit/treymark-releases/releases">releases page</a>.</li>
+    <li>Installed copies of Treymark download new versions from the same place when they update, so one person can add several downloads over time. Read these as "how much has been downloaded", not "how many people".</li>
+    <li><strong>Site visits are not counted.</strong> This website has no analytics and sets no cookies, on purpose. See the <a href="privacy.html">privacy policy</a>.</li>
+  </ul>
+</main>
+
+<footer><div class="wrap">
+  <a class="brand" href="./"><img src="logo.svg" alt="" width="20" height="20">Treymark</a>
+  <a href="start.html">Docs</a>
+  <a href="architecture.html">Architecture</a>
+  <a href="stats.html">Stats</a>
+  <a href="privacy.html">Privacy</a>
+  <a href="cookies.html">Cookies</a>
+  <a href="terms.html">Terms</a>
+  <a href="https://github.com/graftonatwit/treymark-releases/issues">Feedback</a>
+  <span class="copy">© 2026 Trevor Grafton</span>
+</div></footer>
+<script>
+(async () => {
+  const $ = id => document.getElementById(id);
+  try {
+    const r = await fetch('https://api.github.com/repos/graftonatwit/treymark-releases/releases?per_page=100', { headers: { Accept: 'application/vnd.github+json' } });
+    if (!r.ok) throw new Error(r.status);
+    const rel = (await r.json()).filter(x => !x.draft);
+    const sum = (x, test) => x.assets.filter(a => test(a.name)).reduce((n, a) => n + a.download_count, 0);
+    const exe = n => /^Treymark-Setup-.*\.exe$/.test(n), extra = n => /\.(zip|vsix)$/.test(n);
+    const fmt = n => n.toLocaleString('en-US');
+    $('total').textContent = fmt(rel.reduce((n, x) => n + sum(x, exe), 0));
+    $('addons').textContent = fmt(rel.reduce((n, x) => n + sum(x, extra), 0));
+    $('releases').textContent = fmt(rel.length);
+    if (rel[0]) { $('latest').textContent = fmt(sum(rel[0], exe)); $('latest-label').textContent = 'installer downloads, ' + rel[0].tag_name; }
+    $('rows').replaceChildren(...rel.map(x => {
+      const tr = document.createElement('tr');
+      for (const [t, cls] of [[x.tag_name], [new Date(x.published_at).toLocaleDateString('en-US')], [fmt(sum(x, exe)), 'num'], [fmt(sum(x, extra)), 'num']]) {
+        const td = document.createElement('td'); td.textContent = t; if (cls) td.className = cls; tr.append(td);
+      }
+      return tr;
+    }));
+  } catch (e) {
+    for (const id of ['total', 'latest', 'addons', 'releases']) $(id).textContent = '-';
+    $('rows').replaceChildren(); $('err').hidden = false;
+  }
+})();
+</script>
+</body>
+</html>
