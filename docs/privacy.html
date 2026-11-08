@@ -31,9 +31,11 @@
     <li><strong>Agent token.</strong> A random token in <code>.treymark/token</code> lets your coding agent connect to the app.</li>
   </ul>
   <h3>What is sent to me</h3>
-  <p>Nothing. The app and extension have no accounts, no analytics, no crash reporting and no telemetry. They do not send notes, code, page content or usage data to me or anyone else.</p>
+  <p>Nothing. The app and extension have no accounts, no analytics, no crash reporting and no telemetry. They do not send notes, code, page content or usage data to me or anyone else. The only network request the app makes is the update check described below.</p>
   <h3>How the parts talk to each other</h3>
   <p>The app runs a small server that listens only on <code>127.0.0.1</code> (your own computer). The extension and the script tag send notes to it from localhost pages. Your coding agent reads and answers notes through it using the private token. None of this traffic leaves your computer.</p>
+  <h3>Update checks</h3>
+  <p>Every few hours the app asks GitHub whether a newer release of Treymark exists, and downloads it from GitHub if so. Like any web request, GitHub sees your IP address. Nothing about you, your projects or your notes is sent.</p>
   <h3>Your coding agent</h3>
   <p>When your agent reads a note, the note becomes part of that agent's session. Your agent provider (for example Anthropic, OpenAI or Cursor) handles that data under its own terms and privacy policy, not this one.</p>
   <h3>Extension permissions</h3>

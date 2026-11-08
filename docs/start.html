@@ -46,7 +46,7 @@
   </ol>
   <pre>%LOCALAPPDATA%\Programs\Treymark\resources\extension</pre>
   <h3>Script tag</h3>
-  <p>For other browsers, or if you prefer no extension, add this to your app during development only:</p>
+  <p>For other browsers, or if you prefer no extension, add the tag from the <strong>Connect agent</strong> tab to your app during development only. It usually looks like this (the port can differ if 4747 was busy):</p>
   <pre>&lt;script src="http://127.0.0.1:4747/overlay.js"&gt;&lt;/script&gt;</pre>
 
   <h2 id="agent">4. Connect your agent</h2>
@@ -74,14 +74,18 @@
   </ul>
 
   <h2 id="trouble">Troubleshooting</h2>
-  <h3>"Port 4747 is busy"</h3>
-  <p>Another program, or a second copy of Treymark started from a terminal, is using the port. Close it, then click your project in the sidebar again.</p>
+  <h3>"Ports 4747-4756 are all busy"</h3>
+  <p>Treymark uses the first free port from 4747 to 4756 and the extension and your agent find it automatically. This message means all ten are taken by other local servers. Close some of them, then click your project in the sidebar again.</p>
   <h3>The note button does not appear</h3>
   <p>Treymark only runs on <code>localhost</code> and <code>127.0.0.1</code> pages. Check that the extension is enabled, reload the page, and make sure Treymark is open with a project selected.</p>
   <h3>My agent says the server is not running</h3>
   <p>Open Treymark and select the project. Your agent talks to the app, so it needs to be running.</p>
   <h3>The agent does not see Treymark tools</h3>
   <p>Start a new agent session after adding the MCP setup. In Claude Code, run <code>/mcp</code> to check that <code>treymark</code> is connected.</p>
+  <h3>Updates</h3>
+  <p>From version 0.2.0, Treymark checks for updates every few hours. When one is ready, click <strong>Restart to update</strong> in the sidebar or the tray menu. If you have 0.1.x, download the latest installer once. After an update, open <code>chrome://extensions</code> and click the reload icon on Treymark so the extension picks up the new version.</p>
+  <h3>Start with Windows</h3>
+  <p>Off by default. Turn on <strong>Start with Windows</strong> in the sidebar to have Treymark start in the tray when you sign in.</p>
   <h3>Uninstall</h3>
   <p>Use Windows <strong>Settings &gt; Apps</strong>. Your notes stay in each project's <code>.treymark</code> folder until you delete them.</p>
   <p style="margin-top:32px">Still stuck? <a href="https://github.com/graftonatwit/treymark-releases/issues">Open an issue</a>.</p>
