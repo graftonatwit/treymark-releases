@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started · Treymark</title>
+<meta name="description" content="Install Treymark, add it to your page, connect Claude Code, Codex or Cursor, and run your first note loop.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="./"><img src="logo.svg" alt="" width="24" height="24">Treymark</a>
+  <div class="links">
+    <a href="start.html">Docs</a>
+    <a class="btn btn-primary btn-sm" href="https://github.com/graftonatwit/treymark-releases/releases/latest">Download</a>
+  </div>
+</div></nav>
+
+<main class="doc">
+  <h1>Getting started</h1>
+  <p class="updated">About two minutes from download to your first fixed note.</p>
+  <div class="toc">
+    <a href="#install">Install</a><a href="#project">Pick a project</a><a href="#page">Add to your page</a>
+    <a href="#agent">Connect your agent</a><a href="#loop">First note</a><a href="#trouble">Troubleshooting</a>
+  </div>
+
+  <h2 id="install">1. Install</h2>
+  <ol>
+    <li>Download <code>Treymark-Setup-&lt;version&gt;.exe</code> from the <a href="https://github.com/graftonatwit/treymark-releases/releases/latest">latest release</a>.</li>
+    <li>Run it, accept the license, and choose where to install. No admin rights are needed.</li>
+  </ol>
+  <div class="note">Treymark is not code signed yet, so Windows may show <strong>"Windows protected your PC"</strong>. Click <strong>More info</strong>, then <strong>Run anyway</strong>. Each release lists a SHA-256 checksum if you want to verify the download.</div>
+
+  <h2 id="project">2. Pick your project</h2>
+  <p>Open Treymark and click <strong>Choose project folder</strong>. Pick the root folder of the web app you are working on. Treymark starts its local server for that project and keeps notes in a <code>.treymark</code> folder inside it. Add <code>.treymark/</code> to your <code>.gitignore</code>.</p>
+  <p>You can add several projects in the sidebar and click one to switch. One project is active at a time. Closing the window keeps Treymark running in the system tray; quit from the tray icon.</p>
+
+  <h2 id="page">3. Add Treymark to your page</h2>
+  <h3>Chrome extension (recommended)</h3>
+  <p>The extension adds Treymark to every page on <code>localhost</code> or <code>127.0.0.1</code>, so your project needs no changes. It works in Chrome and Edge.</p>
+  <ol>
+    <li>Open <code>chrome://extensions</code> (or <code>edge://extensions</code>).</li>
+    <li>Turn on <strong>Developer mode</strong>.</li>
+    <li>Click <strong>Load unpacked</strong> and choose the extension folder. The <strong>Connect agent</strong> tab in the app shows its path. With the default install it is:</li>
+  </ol>
+  <pre>%LOCALAPPDATA%\Programs\Treymark\resources\extension</pre>
+  <h3>Script tag</h3>
+  <p>For other browsers, or if you prefer no extension, add this to your app during development only:</p>
+  <pre>&lt;script src="http://127.0.0.1:4747/overlay.js"&gt;&lt;/script&gt;</pre>
+
+  <h2 id="agent">4. Connect your agent</h2>
+  <p>Open the <strong>Connect agent</strong> tab. It shows ready-to-copy setup for Claude Code, Codex, Cursor and any agent with a shell, already pointing at your project and at Treymark's built-in runtime. You do not need Node installed.</p>
+  <p>Claude Code example (the app fills in your real paths):</p>
+  <pre>claude mcp add treymark -s user cmd /c "...\Treymark\resources\bin\treymark.cmd" "mcp" "C:\path\to\your\project"</pre>
+  <p>Start a new agent session afterwards so it loads the Treymark tools.</p>
+  <h3>Install the skill</h3>
+  <p>In the same tab, click <strong>Install for Claude Code</strong>. The skill teaches your agent the note loop. For Codex, Cursor and others, copy the instructions into your <code>AGENTS.md</code> or rules file.</p>
+
+  <h2 id="loop">5. Your first note</h2>
+  <ol>
+    <li>Open your app on localhost and press <strong>Alt+A</strong> (or click the note button in the bottom right).</li>
+    <li>Click an element, or drag a box over an area.</li>
+    <li>Type what should change and press <strong>Ctrl+Enter</strong>. A pin appears on the element.</li>
+    <li>Tell your agent: <strong>"check my Treymark notes"</strong>.</li>
+    <li>Watch the pin change color. Click it to read the reply, and reply again to keep refining.</li>
+  </ol>
+  <p>What the pin colors mean:</p>
+  <ul>
+    <li><strong>Blue, Waiting for agent:</strong> sent, not picked up yet.</li>
+    <li><strong>Amber, Agent working:</strong> your agent claimed it.</li>
+    <li><strong>Purple, Needs your reply:</strong> your agent has a question. Answer on the note.</li>
+    <li><strong>Green, Done:</strong> changed. Reply to reopen it if it is not quite right.</li>
+  </ul>
+
+  <h2 id="trouble">Troubleshooting</h2>
+  <h3>"Port 4747 is busy"</h3>
+  <p>Another program, or a second copy of Treymark started from a terminal, is using the port. Close it, then click your project in the sidebar again.</p>
+  <h3>The note button does not appear</h3>
+  <p>Treymark only runs on <code>localhost</code> and <code>127.0.0.1</code> pages. Check that the extension is enabled, reload the page, and make sure Treymark is open with a project selected.</p>
+  <h3>My agent says the server is not running</h3>
+  <p>Open Treymark and select the project. Your agent talks to the app, so it needs to be running.</p>
+  <h3>The agent does not see Treymark tools</h3>
+  <p>Start a new agent session after adding the MCP setup. In Claude Code, run <code>/mcp</code> to check that <code>treymark</code> is connected.</p>
+  <h3>Uninstall</h3>
+  <p>Use Windows <strong>Settings &gt; Apps</strong>. Your notes stay in each project's <code>.treymark</code> folder until you delete them.</p>
+  <p style="margin-top:32px">Still stuck? <a href="https://github.com/graftonatwit/treymark-releases/issues">Open an issue</a>.</p>
+</main>
+
+<footer><div class="wrap">
+  <a class="brand" href="./"><img src="logo.svg" alt="" width="20" height="20">Treymark</a>
+  <a href="start.html">Docs</a>
+  <a href="privacy.html">Privacy</a>
+  <a href="cookies.html">Cookies</a>
+  <a href="terms.html">Terms</a>
+  <a href="https://github.com/graftonatwit/treymark-releases/issues">Feedback</a>
+  <span class="copy">© 2026 Trevor Grafton</span>
+</div></footer>
+</body>
+</html>

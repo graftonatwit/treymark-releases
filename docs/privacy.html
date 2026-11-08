@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy policy · Treymark</title>
+<meta name="description" content="How Treymark and this website handle your data.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="./"><img src="logo.svg" alt="" width="24" height="24">Treymark</a>
+  <div class="links">
+    <a href="start.html">Docs</a>
+    <a class="btn btn-primary btn-sm" href="https://github.com/graftonatwit/treymark-releases/releases/latest">Download</a>
+  </div>
+</div></nav>
+
+<main class="doc">
+  <h1>Privacy policy</h1>
+  <p class="updated">Last updated November 7, 2026</p>
+  <p>Short version: Treymark runs on your computer and does not collect your data. This website has no analytics and sets no cookies.</p>
+  <p>This policy covers the Treymark desktop app, the Treymark browser extension, the Treymark agent skill, and this website. Treymark is made by Trevor Grafton ("I", "me").</p>
+
+  <h2>The Treymark app and extension</h2>
+  <h3>What stays on your computer</h3>
+  <ul>
+    <li><strong>Notes.</strong> Each note stores the text you write, the page address, a CSS selector, a short description of the element (tag, classes and visible text) and its position. Notes are saved in a <code>.treymark</code> folder inside your project.</li>
+    <li><strong>Project list.</strong> The folders you add are saved in the app's settings folder on your computer.</li>
+    <li><strong>Agent token.</strong> A random token in <code>.treymark/token</code> lets your coding agent connect to the app.</li>
+  </ul>
+  <h3>What is sent to me</h3>
+  <p>Nothing. The app and extension have no accounts, no analytics, no crash reporting and no telemetry. They do not send notes, code, page content or usage data to me or anyone else.</p>
+  <h3>How the parts talk to each other</h3>
+  <p>The app runs a small server that listens only on <code>127.0.0.1</code> (your own computer). The extension and the script tag send notes to it from localhost pages. Your coding agent reads and answers notes through it using the private token. None of this traffic leaves your computer.</p>
+  <h3>Your coding agent</h3>
+  <p>When your agent reads a note, the note becomes part of that agent's session. Your agent provider (for example Anthropic, OpenAI or Cursor) handles that data under its own terms and privacy policy, not this one.</p>
+  <h3>Extension permissions</h3>
+  <p>The extension only runs on <code>localhost</code> and <code>127.0.0.1</code> pages. It does not read your browsing history and does not run on other websites.</p>
+
+  <h2>This website</h2>
+  <p>This site is hosted on GitHub Pages and the downloads are hosted on GitHub Releases. I do not run analytics or tracking on it and it sets no cookies. GitHub, as the host, may log technical data such as your IP address when you visit or download, as described in the <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub General Privacy Statement</a>. I can see aggregate download counts for each release, which do not identify you.</p>
+  <p>If you open an issue on GitHub, your GitHub username and what you write are public on GitHub.</p>
+
+  <h2>Children</h2>
+  <p>Treymark is a developer tool and is not directed at children under 13.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, I will update the date above and note the change in the release notes.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about privacy: <a href="https://github.com/graftonatwit/treymark-releases/issues">open an issue</a>.</p>
+</main>
+
+<footer><div class="wrap">
+  <a class="brand" href="./"><img src="logo.svg" alt="" width="20" height="20">Treymark</a>
+  <a href="start.html">Docs</a>
+  <a href="privacy.html">Privacy</a>
+  <a href="cookies.html">Cookies</a>
+  <a href="terms.html">Terms</a>
+  <a href="https://github.com/graftonatwit/treymark-releases/issues">Feedback</a>
+  <span class="copy">© 2026 Trevor Grafton</span>
+</div></footer>
+</body>
+</html>
