@@ -22,7 +22,7 @@
   <p class="updated">About two minutes from download to your first fixed note.</p>
   <div class="toc">
     <a href="#install">Install</a><a href="#project">Pick a project</a><a href="#page">Add to your page</a>
-    <a href="#agent">Connect your agent</a><a href="#loop">First note</a><a href="#trouble">Troubleshooting</a>
+    <a href="#agent">Connect your agent</a><a href="#loop">First note</a><a href="#brain">Second brain</a><a href="#trouble">Troubleshooting</a>
   </div>
 
   <h2 id="install">1. Install</h2>
@@ -55,7 +55,7 @@
   <pre>claude mcp add treymark -s user cmd /c "...\Treymark\resources\bin\treymark.cmd" "mcp" "C:\path\to\your\project"</pre>
   <p>Start a new agent session afterwards so it loads the Treymark tools.</p>
   <h3>Install the skill</h3>
-  <p>In the same tab, click <strong>Install for Claude Code</strong>. The skill teaches your agent the note loop. For Codex, Cursor and others, copy the instructions into your <code>AGENTS.md</code> or rules file.</p>
+  <p>In the same tab, click <strong>Install for Claude Code</strong> on <strong>Treymark</strong> (the note loop) and <strong>Treymark UI</strong> (a polish checklist for visual changes). For Codex, Cursor and others, copy the instructions into your <code>AGENTS.md</code> or rules file. The tab also lists recommended design skills made by others, with their license.</p>
 
   <h2 id="loop">5. Your first note</h2>
   <ol>
@@ -72,6 +72,15 @@
     <li><strong>Purple, Needs your reply:</strong> your agent has a question. Answer on the note.</li>
     <li><strong>Green, Done:</strong> changed. Reply to reopen it if it is not quite right.</li>
   </ul>
+
+  <h2 id="brain">6. Keep a UI second brain (optional)</h2>
+  <p>Open the <strong>Notes folder</strong> tab and choose a folder, or click <strong>Create a new notes folder</strong>. From then on, every finished note is saved there as Markdown:</p>
+  <ul>
+    <li>One note per change with the request, the element, the conversation and <strong>before and after screenshots</strong>.</li>
+    <li>A <code>Changelog.md</code> per project, newest first.</li>
+  </ul>
+  <p>Your agent reads the changelog before new changes, so it follows what you liked before. It works best with <a href="https://obsidian.md">Obsidian</a>: pick your vault as the folder, then use <strong>Open in Obsidian</strong>. For agents that write notes too, see <a href="https://github.com/kepano/obsidian-skills">Obsidian skills</a>.</p>
+  <p>Screenshots load your localhost page in a hidden window, so a page behind a login may show the login screen.</p>
 
   <h2 id="trouble">Troubleshooting</h2>
   <h3>"Ports 4747-4756 are all busy"</h3>
