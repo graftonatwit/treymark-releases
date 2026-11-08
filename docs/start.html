@@ -23,7 +23,7 @@
   <p class="updated">About two minutes from download to your first fixed note.</p>
   <div class="toc">
     <a href="#need">What you need</a><a href="#install">Install</a><a href="#project">Pick a project</a><a href="#page">Add to your page</a>
-    <a href="#agent">Connect your agent</a><a href="#loop">First note</a><a href="#source">File and line</a><a href="#errors">Page errors</a><a href="#editor">Editor</a><a href="#handsfree">Hands-free</a><a href="#share">Share</a><a href="#brain">Second brain</a><a href="#trouble">Troubleshooting</a>
+    <a href="#agent">Connect your agent</a><a href="#loop">First note</a><a href="#source">File and line</a><a href="#errors">Page errors</a><a href="#clips">Style clips</a><a href="#editor">Editor</a><a href="#handsfree">Hands-free</a><a href="#share">Share</a><a href="#brain">Second brain</a><a href="#trouble">Troubleshooting</a>
   </div>
 
   <h2 id="need">What you need</h2>
@@ -51,13 +51,14 @@
   <h3>The whole flow at a glance</h3>
   <ol>
     <li>Install Treymark and open it once. It sits in the system tray.</li>
-    <li>Choose your project folder in the app. The app starts a local server for it.</li>
-    <li>Load the extension in your browser (one time), then open your app on localhost.</li>
-    <li>Connect your agent (one time): paste the MCP command from the <strong>Connect agent</strong> tab and install the skill.</li>
+    <li>Click <strong>Set up everything</strong> on the first screen. It asks for your project folder, installs the agent skills, connects Claude Code and adds the VS Code and Cursor panel. Nothing else to copy or paste.</li>
+    <li>Load the extension in your browser (one time): the same screen has an <strong>Open extensions page</strong> button that copies the folder path for you. Then open your app on localhost.</li>
+    <li>Using Codex, Cursor or another agent? The <strong>Connect agent</strong> tab has the copy-and-paste setup for them.</li>
     <li>Press <strong>Alt+A</strong> on your page, click an element, type what should change, and send.</li>
     <li>Tell your agent <strong>"check my Treymark notes"</strong>. It reads the note, changes the code and replies.</li>
     <li>Reload your page, read the reply on the pin, and reply again until it is right. Green means done.</li>
   </ol>
+  <div class="note"><strong>What "Set up everything" changes.</strong> It adds a Treymark entry to your Claude Code user settings (the same as running <code>claude mcp add treymark -s user ...</code>), copies the two skills into <code>~/.claude/skills</code>, and runs <code>code</code> or <code>cursor --install-extension</code> if those are installed. It runs only when you click it, and each step reports separately, so a missing tool is a note, not an error. Click it again any time after an update.</div>
   <p>Steps 1 to 4 are one-time setup. After that, each change is steps 5 to 7. Keep Treymark running (the tray is fine) while you work, because your agent talks to it.</p>
 
   <h2 id="install">1. Install</h2>
@@ -122,6 +123,15 @@
   <p>If the page logged a console error, threw an error or had a failed request just before you left the note, the note card shows <strong>N recent page errors attached</strong>. Click it to remove them before you send. Your agent reads them to fix what is broken, not only what looks wrong. Treymark keeps only the message, the stack and, for requests, the method, address (without the part after <code>?</code>) and status. It never keeps request bodies, headers or cookies. Errors that happen in your own code are traced back to the line you wrote (through the source map your dev server already serves).</p>
   <h3 id="after">Before and after</h3>
   <p>When a note is marked done, Treymark takes a second screenshot of the same area. Open the note in the app and drag the slider to compare before and after. It needs your page to still be running at that address.</p>
+
+  <h3 id="clips">Clip styles you like, from any site</h3>
+  <p>Notes are for your own page. <strong>Clips</strong> are for looks you want to remember. On any site, press <strong>Alt+Shift+C</strong> (or click the Treymark toolbar button, then press <strong>C</strong>), click an element, add a few tags and an optional note, and save. Treymark stores a screenshot of that element, its colors, fonts, spacing and shadows, and the page address (without anything after the <code>?</code>).</p>
+  <ul>
+    <li>Open the <strong>Styles</strong> tab in the app to browse your clips. If you set a notes folder, each clip is also saved there as a Markdown note with tags and its screenshot, in a <code>Styles</code> folder, so Obsidian can search them.</li>
+    <li>Click <strong>Use on my page</strong> on a clip and say what should look like it. Treymark sends your agent a note with the saved styles, and your agent can also read your clips and their screenshots.</li>
+    <li>On a site that is not localhost, click the toolbar button once and allow Treymark on that site. Chrome and Firefox ask for each site separately. Use Alt+Shift+C or the toolbar button, not only Alt+A, if you want the screenshot: browsers only let the extension capture a page after you use the extension on it. Without it the clip is saved with styles but no picture.</li>
+    <li>Clips never leave your computer. Only the Treymark extension may add clips from other sites, and it can add them but not read your notes.</li>
+  </ul>
 
   <h3 id="editor">Notes in VS Code or Cursor (optional)</h3>
   <p>In <strong>Connect agent &gt; Notes in your editor</strong>, copy the command for your editor and run it, or download <code>treymark-vscode.vsix</code> from the latest release and run <code>code --install-extension treymark-vscode.vsix</code> (use <code>cursor</code> for Cursor). Then click the Treymark icon in the activity bar: you see every note, click one to jump to the matching code, and reply or mark it done.</p>
