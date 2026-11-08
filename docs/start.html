@@ -23,7 +23,7 @@
   <p class="updated">About two minutes from download to your first fixed note.</p>
   <div class="toc">
     <a href="#need">What you need</a><a href="#install">Install</a><a href="#project">Pick a project</a><a href="#page">Add to your page</a>
-    <a href="#agent">Connect your agent</a><a href="#loop">First note</a><a href="#handsfree">Hands-free</a><a href="#share">Share</a><a href="#brain">Second brain</a><a href="#trouble">Troubleshooting</a>
+    <a href="#agent">Connect your agent</a><a href="#loop">First note</a><a href="#source">File and line</a><a href="#errors">Page errors</a><a href="#editor">Editor</a><a href="#handsfree">Hands-free</a><a href="#share">Share</a><a href="#brain">Second brain</a><a href="#trouble">Troubleshooting</a>
   </div>
 
   <h2 id="need">What you need</h2>
@@ -116,8 +116,16 @@
     <li><strong>Green, Done:</strong> changed. Reply to reopen it if it is not quite right.</li>
   </ul>
 
+  <h3 id="source">Your agent gets the file and line</h3>
+  <p>When you click an element on a React, Vue or Svelte app running in development, Treymark asks the page which source file (and for React and Svelte, which line) created that element, and adds it to the note. Your agent opens that file first instead of searching for it. Nothing to install in your project. It works on <code>npm run dev</code>, not on production builds. If the page cannot say, the note still carries the selector and your agent searches the code, as before.</p>
+  <h3 id="errors">Page errors come along</h3>
+  <p>If the page logged a console error, threw an error or had a failed request just before you left the note, the note card shows <strong>N recent page errors attached</strong>. Click it to remove them before you send. Your agent reads them to fix what is broken, not only what looks wrong. Treymark keeps only the message, the stack and, for requests, the method, address (without the part after <code>?</code>) and status. It never keeps request bodies, headers or cookies. Errors that happen in your own code are traced back to the line you wrote (through the source map your dev server already serves).</p>
+  <h3 id="after">Before and after</h3>
+  <p>When a note is marked done, Treymark takes a second screenshot of the same area. Open the note in the app and drag the slider to compare before and after. It needs your page to still be running at that address.</p>
+
   <h3 id="editor">Notes in VS Code or Cursor (optional)</h3>
   <p>In <strong>Connect agent &gt; Notes in your editor</strong>, copy the command for your editor and run it, or download <code>treymark-vscode.vsix</code> from the latest release and run <code>code --install-extension treymark-vscode.vsix</code> (use <code>cursor</code> for Cursor). Then click the Treymark icon in the activity bar: you see every note, click one to jump to the matching code, and reply or mark it done.</p>
+  <p>Open notes are also marked in the code itself. A dot in the gutter and a tinted line show where the element comes from (blue waiting, amber working, purple needs your reply). A red mark shows the line where a page error began. Hover a marked line to read the note, reply or mark it done. Marks follow the line numbers from when you left the note, so they can drift if you edit that file before the agent replies. Open the project folder in your editor so Treymark can find the files.</p>
 
   <h2 id="handsfree">6. Hands-free (optional)</h2>
   <ul>

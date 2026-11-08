@@ -20,7 +20,7 @@
 
 <main class="doc">
   <h1>Privacy policy</h1>
-  <p class="updated">Last updated November 7, 2026</p>
+  <p class="updated">Last updated November 8, 2026</p>
   <p>Short version: Treymark runs on your computer and does not collect your data. This website has no analytics and sets no cookies.</p>
   <p>This policy covers the Treymark desktop app, the Treymark browser extension, the Treymark agent skill, and this website. Treymark is made by Trevor Grafton ("I", "me").</p>
 
@@ -33,6 +33,9 @@
     <li><strong>Agent token.</strong> A random token in <code>.treymark/token</code> lets your coding agent connect to the app.</li>
     <li><strong>Active project.</strong> The app saves which project is selected in <code>.treymark/active.json</code> in your user folder, so your agent knows which project to work on.</li>
     <li><strong>Notes folder (optional, off by default).</strong> If you choose a notes folder, finished notes are saved there as Markdown files, with screenshots of the noted area before and after the change. Screenshots are taken by loading your localhost page in a hidden window on your computer; only localhost pages are ever loaded. Your agent may read this folder to learn your preferences.</li>
+    <li><strong>Source location.</strong> In development builds of React, Vue and Svelte, a note can carry the project file (and line) the element came from. Folders outside your project are cut down to the last few parts so your user name is not stored.</li>
+    <li><strong>Page errors (you can remove them before sending).</strong> A small script that Treymark adds to your localhost page keeps the last few console errors, uncaught errors and failed requests in the page's memory. When you leave a note they are shown on the note card and attached only if you leave them on. For requests only the method, the address without the query string or fragment, and the status are kept. Request bodies, headers and cookies are never read. Console messages are whatever your own app printed, so remove them if they contain something private.</li>
+    <li><strong>After screenshot.</strong> When a note is marked done, the app loads your localhost page in the same hidden window and saves a second screenshot beside the first in <code>.treymark/shots</code>.</li>
   </ul>
   <h3>What is sent to me</h3>
   <p>Nothing. The app and extension have no accounts, no analytics, no crash reporting and no telemetry. They do not send notes, code, page content or usage data to me or anyone else. The only network request the app makes is the update check described below.</p>
