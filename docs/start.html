@@ -22,7 +22,7 @@
   <p class="updated">About two minutes from download to your first fixed note.</p>
   <div class="toc">
     <a href="#install">Install</a><a href="#project">Pick a project</a><a href="#page">Add to your page</a>
-    <a href="#agent">Connect your agent</a><a href="#loop">First note</a><a href="#brain">Second brain</a><a href="#trouble">Troubleshooting</a>
+    <a href="#agent">Connect your agent</a><a href="#loop">First note</a><a href="#handsfree">Hands-free</a><a href="#brain">Second brain</a><a href="#trouble">Troubleshooting</a>
   </div>
 
   <h2 id="install">1. Install</h2>
@@ -50,9 +50,9 @@
   <pre>&lt;script src="http://127.0.0.1:4747/overlay.js"&gt;&lt;/script&gt;</pre>
 
   <h2 id="agent">4. Connect your agent</h2>
-  <p>Open the <strong>Connect agent</strong> tab. It shows ready-to-copy setup for Claude Code, Codex, Cursor and any agent with a shell, already pointing at your project and at Treymark's built-in runtime. You do not need Node installed.</p>
-  <p>Claude Code example (the app fills in your real paths):</p>
-  <pre>claude mcp add treymark -s user cmd /c "...\Treymark\resources\bin\treymark.cmd" "mcp" "C:\path\to\your\project"</pre>
+  <p>Open the <strong>Connect agent</strong> tab. It shows ready-to-copy setup for Claude Code, Codex, Cursor and any agent with a shell, using Treymark's built-in runtime. You do not need Node installed. One setup covers every project: your agent always works on the project selected in Treymark.</p>
+  <p>Claude Code example (the app fills in your real path):</p>
+  <pre>claude mcp add treymark -s user cmd /c "...\Treymark\resources\bin\treymark.cmd" "mcp"</pre>
   <p>Run it in PowerShell or Command Prompt. In Git Bash, put <code>MSYS_NO_PATHCONV=1</code> in front, or Git Bash turns <code>/c</code> into a folder path and the connection fails. Start a new agent session afterwards so it loads the Treymark tools.</p>
   <h3>Install the skill</h3>
   <p>In the same tab, click <strong>Install for Claude Code</strong> on <strong>Treymark</strong> (the note loop) and <strong>Treymark UI</strong> (a polish checklist for visual changes). For Codex, Cursor and others, copy the instructions into your <code>AGENTS.md</code> or rules file. The tab also lists recommended design skills made by others, with their license.</p>
@@ -73,7 +73,14 @@
     <li><strong>Green, Done:</strong> changed. Reply to reopen it if it is not quite right.</li>
   </ul>
 
-  <h2 id="brain">6. Keep a UI second brain (optional)</h2>
+  <h2 id="handsfree">6. Hands-free (optional)</h2>
+  <ul>
+    <li><strong>Batches:</strong> on a new note, click <strong>Add to batch</strong> instead of sending. Add more, then click <strong>Send N notes to agent</strong>. Your agent plans them together.</li>
+    <li><strong>Watch mode:</strong> tell your agent <strong>"watch my Treymark notes"</strong>. It waits for new notes and handles them as they arrive, inside the session you already have open.</li>
+    <li><strong>Auto-run:</strong> in <strong>Connect agent</strong>, turn on <strong>Auto-run Claude Code</strong> for a project. Treymark then starts Claude Code by itself when you send notes. It can read and edit files and reply on notes, but cannot run commands. It uses your Claude plan, so it is off by default and limited to 30 runs a day. Output goes to <code>.treymark/autorun.log</code>.</li>
+  </ul>
+
+  <h2 id="brain">7. Keep a UI second brain (optional)</h2>
   <p>Open the <strong>Notes folder</strong> tab and choose a folder, or click <strong>Create a new notes folder</strong>. From then on, every finished note is saved there as Markdown:</p>
   <ul>
     <li>One note per change with the request, the element, the conversation and <strong>before and after screenshots</strong>.</li>
