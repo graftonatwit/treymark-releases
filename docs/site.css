@@ -87,7 +87,8 @@ h2 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -.025em; line-height: 1.
 .agents { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
 .agents span { border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 6px 14px; font-weight: 500; font-size: 14px; }
 .video { margin-top: 40px; aspect-ratio: 16/9; border: 1px dashed var(--line); border-radius: 14px; display: grid; place-items: center; color: var(--ink-3); background: var(--panel); }
-.video video { width: 100%; height: 100%; border-radius: 14px; }
+.video video { width: 100%; height: 100%; border-radius: 14px; display: block; }
+.video:has(video) { border-style: solid; aspect-ratio: 16/10; overflow: hidden; }
 .final { text-align: center; }
 .final .lead { margin: 0 auto; }
 
