@@ -28,6 +28,7 @@
   <ul>
     <li><strong>Notes.</strong> Each note stores the text you write, the page address, a CSS selector, a short description of the element (tag, classes and visible text) and its position. Notes are saved in a <code>.treymark</code> folder inside your project.</li>
     <li><strong>Project list.</strong> The folders you add are saved in the app's settings folder on your computer.</li>
+    <li><strong>Note details and screenshots.</strong> Each note also stores the element's current styles, your window size and any marks you drew. The app takes a screenshot of the noted area by loading your localhost page in a hidden window on your computer and saves it in <code>.treymark/shots</code>. Only localhost pages are ever loaded. Your agent can view these screenshots.</li>
     <li><strong>Agent token.</strong> A random token in <code>.treymark/token</code> lets your coding agent connect to the app.</li>
     <li><strong>Active project.</strong> The app saves which project is selected in <code>.treymark/active.json</code> in your user folder, so your agent knows which project to work on.</li>
     <li><strong>Notes folder (optional, off by default).</strong> If you choose a notes folder, finished notes are saved there as Markdown files, with screenshots of the noted area before and after the change. Screenshots are taken by loading your localhost page in a hidden window on your computer; only localhost pages are ever loaded. Your agent may read this folder to learn your preferences.</li>
