@@ -22,7 +22,7 @@
   <p class="updated">About two minutes from download to your first fixed note.</p>
   <div class="toc">
     <a href="#install">Install</a><a href="#project">Pick a project</a><a href="#page">Add to your page</a>
-    <a href="#agent">Connect your agent</a><a href="#loop">First note</a><a href="#handsfree">Hands-free</a><a href="#brain">Second brain</a><a href="#trouble">Troubleshooting</a>
+    <a href="#agent">Connect your agent</a><a href="#loop">First note</a><a href="#handsfree">Hands-free</a><a href="#share">Share</a><a href="#brain">Second brain</a><a href="#trouble">Troubleshooting</a>
   </div>
 
   <h2 id="install">1. Install</h2>
@@ -81,7 +81,14 @@
     <li><strong>Auto-run:</strong> in <strong>Connect agent</strong>, turn on <strong>Auto-run Claude Code</strong> for a project. Treymark then starts Claude Code by itself when you send notes. It can read and edit files and reply on notes, but cannot run commands. It uses your Claude plan, so it is off by default and limited to 30 runs a day. Output goes to <code>.treymark/autorun.log</code>.</li>
   </ul>
 
-  <h2 id="brain">7. Keep a UI second brain (optional)</h2>
+  <h2 id="share">7. Share and staging sites (optional)</h2>
+  <ul>
+    <li><strong>GitHub issue:</strong> open a note in the app and click <strong>GitHub issue</strong>. Treymark opens a new-issue page with everything filled in and copies the screenshot so you can paste it. Nothing is posted until you click Submit on GitHub. The repository comes from your project's git remote, or Treymark asks once.</li>
+    <li><strong>Teammates:</strong> click <strong>Export</strong> in the inbox to save your notes and screenshots as a <code>.treymark</code> file. Your teammate clicks <strong>Import</strong>, and their agent can pick the notes up. Imported notes are checked like any other input.</li>
+    <li><strong>Staging sites:</strong> under <strong>Connect agent &gt; Staging sites</strong>, add the address (for example <code>https://staging.example.com</code>). Open that site in Chrome, click the Treymark extension icon, and allow it when Chrome asks. Treymark only runs on sites you add in both places.</li>
+  </ul>
+
+  <h2 id="brain">8. Keep a UI second brain (optional)</h2>
   <p>Open the <strong>Notes folder</strong> tab and choose a folder, or click <strong>Create a new notes folder</strong>. From then on, every finished note is saved there as Markdown:</p>
   <ul>
     <li>One note per change with the request, the element, the conversation and <strong>before and after screenshots</strong>.</li>
