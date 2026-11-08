@@ -53,7 +53,7 @@
   <p>Open the <strong>Connect agent</strong> tab. It shows ready-to-copy setup for Claude Code, Codex, Cursor and any agent with a shell, already pointing at your project and at Treymark's built-in runtime. You do not need Node installed.</p>
   <p>Claude Code example (the app fills in your real paths):</p>
   <pre>claude mcp add treymark -s user cmd /c "...\Treymark\resources\bin\treymark.cmd" "mcp" "C:\path\to\your\project"</pre>
-  <p>Start a new agent session afterwards so it loads the Treymark tools.</p>
+  <p>Run it in PowerShell or Command Prompt. In Git Bash, put <code>MSYS_NO_PATHCONV=1</code> in front, or Git Bash turns <code>/c</code> into a folder path and the connection fails. Start a new agent session afterwards so it loads the Treymark tools.</p>
   <h3>Install the skill</h3>
   <p>In the same tab, click <strong>Install for Claude Code</strong> on <strong>Treymark</strong> (the note loop) and <strong>Treymark UI</strong> (a polish checklist for visual changes). For Codex, Cursor and others, copy the instructions into your <code>AGENTS.md</code> or rules file. The tab also lists recommended design skills made by others, with their license.</p>
 
