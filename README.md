@@ -19,13 +19,17 @@ The installer is not code signed yet, so Windows may show
 ## Get started
 
 1. Open Treymark and choose your project folder.
-2. Add Treymark to your page: load the Chrome extension from the folder shown
-   in the app (chrome://extensions, Developer mode, Load unpacked), or paste
-   the script tag the app gives you.
-3. Open the **Connect agent** tab, copy the setup for your agent, and install
-   the Treymark skill.
+2. Click **Set up everything** on the Connect agent tab. It installs the agent
+   skills, connects Claude Code and adds the VS Code and Cursor panel. For
+   Codex, Cursor or another agent, copy the setup shown on that tab instead.
+3. Add Treymark to your page: paste the script tag the app gives you (any
+   browser), or load the Firefox add-on from the folder shown in the app
+   (about:debugging, This Firefox, Load Temporary Add-on). A Chrome extension
+   is planned, not available yet.
 4. Press Alt+A on your localhost page, click anything, and describe the change.
    Then tell your agent: "check my Treymark notes".
+
+Docs: https://graftonatwit.github.io/treymark-releases/start.html
 
 ## Privacy and security
 
