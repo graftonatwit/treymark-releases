@@ -7,7 +7,10 @@
 <meta name="description" content="Leave notes right on your running web app. Claude Code, Codex, Cursor or any coding agent reads the exact element, makes the change, and replies on the note.">
 <meta property="og:title" content="Treymark: point at it, your agent fixes it">
 <meta property="og:description" content="Leave notes right on your running web app. Your coding agent changes the exact element and replies on the note.">
-<meta property="og:image" content="https://graftonatwit.github.io/treymark-releases/icon.png">
+<meta property="og:image" content="https://graftonatwit.github.io/treymark-releases/walkthrough-poster.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://graftonatwit.github.io/treymark-releases/">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="site.css">
 </head>
@@ -78,6 +81,13 @@
   <div class="video"><video src="demo.mp4" autoplay muted loop playsinline aria-label="Treymark demo: a note on a button, the agent changes it and replies on the note"></video></div>
 </div></section>
 
+<section id="walkthrough"><div class="wrap">
+  <div class="kicker">Full walkthrough</div>
+  <h2>Two minutes, start to finish</h2>
+  <p class="lead">A note on a React shop, the fix and the reply, before and after, saved style clips, and the notes folder. The agent's edit is scripted for the recording; everything else is the real app.</p>
+  <div class="video"><video src="walkthrough.mp4" poster="walkthrough-poster.jpg" controls preload="metadata" playsinline aria-label="Treymark walkthrough: leave a note on a React page, the agent changes the code and replies, before and after screenshots, style clips and the notes folder"></video></div>
+</div></section>
+
 <section id="features"><div class="wrap">
   <div class="kicker">What you get</div>
   <h2>Everything stays in one place</h2>
@@ -94,6 +104,7 @@
     <div class="tile"><div class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div><h3>One-click setup</h3><p>One button picks your project, installs the skills, connects Claude Code and adds the editor panel. No commands to copy.</p></div>
   </div>
   <div class="agents"><span>Claude Code</span><span>Codex</span><span>Cursor</span><span>Gemini CLI</span><span>Any agent with a shell</span></div>
+  <p class="fine" style="margin-top:12px">Tested most with Claude Code. Codex, Cursor and others connect through the same MCP server or the command line.</p>
 </div></section>
 
 <section id="obsidian"><div class="wrap">
@@ -143,11 +154,11 @@ box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);</pre>
 
 <section id="security"><div class="wrap">
   <div class="kicker">Security and privacy</div>
-  <h2>Your code never leaves your machine</h2>
-  <p class="lead">Treymark has no accounts, no cloud and no telemetry. It is a local tool that talks only to your browser and your agent.</p>
+  <h2>Treymark never uploads your code or notes</h2>
+  <p class="lead">Treymark has no accounts, no cloud and no telemetry. Apart from checking GitHub for updates, it is a local tool that talks only to your browser and your agent.</p>
   <div class="grid g3">
     <div class="tile"><h3>Local only</h3><p>The server listens on 127.0.0.1 and refuses requests addressed to any other host.</p></div>
-    <div class="tile"><h3>Locked to localhost</h3><p>Only pages served from localhost can leave notes. Other websites are rejected.</p></div>
+    <div class="tile"><h3>Locked to your sites</h3><p>Only localhost pages, and staging sites you add one by one, can leave notes. Every other website is rejected.</p></div>
     <div class="tile"><h3>Private agent token</h3><p>Your agent signs in with a random per-project token. Pages cannot pretend to be the agent.</p></div>
   </div>
   <p class="fine" style="margin-top:20px">Notes live in a <code style="font-family:var(--mono)">.treymark</code> folder in your project. Read the <a href="privacy.html">privacy policy</a>.</p>

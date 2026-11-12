@@ -20,7 +20,7 @@
 
 <main class="doc">
   <h1>Privacy policy</h1>
-  <p class="updated">Last updated November 8, 2026</p>
+  <p class="updated">Last updated November 12, 2026</p>
   <p>Short version: Treymark runs on your computer and does not collect your data. This website has no analytics and sets no cookies.</p>
   <p>This policy covers the Treymark desktop app, the Treymark browser extension, the Treymark agent skill, and this website. Treymark is made by Trevor Grafton ("I", "me").</p>
 
@@ -41,7 +41,7 @@
   <h3>What is sent to me</h3>
   <p>Nothing. The app and extension have no accounts, no analytics, no crash reporting and no telemetry. They do not send notes, code, page content or usage data to me or anyone else. The only network request the app makes is the update check described below.</p>
   <h3>How the parts talk to each other</h3>
-  <p>The app runs a small server that listens only on <code>127.0.0.1</code> (your own computer). The extension and the script tag send notes to it from localhost pages. Your coding agent reads and answers notes through it using the private token. None of this traffic leaves your computer.</p>
+  <p>The app runs a small server that listens only on <code>127.0.0.1</code> (your own computer). The extension and the script tag send notes to it from localhost pages and from staging sites you add. On sites that stop a page from reaching other addresses, the Firefox add-on makes the call itself and tells the app which page it came from; the app still checks that the page is localhost or on your list. Your coding agent reads and answers notes through it using the private token. None of this traffic leaves your computer.</p>
   <h3>Update checks</h3>
   <p>Every few hours the app asks GitHub whether a newer release of Treymark exists, and downloads it from GitHub if so. Like any web request, GitHub sees your IP address. Nothing about you, your projects or your notes is sent.</p>
   <h3>Auto-run (optional, off by default)</h3>
